@@ -1,2 +1,13 @@
-# Default PR reviewers
-* @actions/pages
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+
+const nextConfig = {
+  output: 'export', // enables static export
+  images: {
+    unoptimized: true, // required, since GH Pages doesn't support Next.js Image optimization
+  },
+  basePath: isProd ? '/artless-world' : '', // replace with your repo name
+  assetPrefix: isProd ? '/artless-world/' : '', 
+}
+
+module.exports = nextConfig
